@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>MCU</title>
+</head>
+<body>
+    <h1>MCU</h1>
+    <form action="javascript:MCU();">
+        Raio:
+        <br>
+        <input id="raio" type="number" name="raio" required>
+        <br>
+        <input type="submit">
+    </form>
+    <br>
+    <div id="mcuPlot" style="width:1280px;height:720px;"></div>
+
+    <script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>
