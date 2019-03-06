@@ -21,7 +21,7 @@ function MRU() {
     Plotly.newPlot( PLOT, [{
         x: x,
         y: y,
-        type: 'line'
+        mode: 'markers'
      }], {
         xaxis: {range: [0, 500]},
         yaxis: {range: [0, 500]} 
@@ -30,7 +30,7 @@ function MRU() {
     setInterval(function() {
         var value = compute1(equacao)
         console.log(value)
-        Plotly.extendTraces(PLOT, {y:[[value]]}, [0]);
+        Plotly.extendTraces(PLOT, {x: [[a-1]], y:[[value]]}, [0]);
 
         if(a > 1) {
             Plotly.relayout(PLOT, {

@@ -1,14 +1,16 @@
 var a = 0;
 var x = [], y = [];
 var raio = 1;
-var n = 10;
+var n = 1;
 PLOT = document.getElementById('mcuPlot');
-
+var flag = 0;
+var req = undefined;
 
 function MCU() {
 
+    
     raio = document.getElementById("raio").value;
-    console.log(raio);
+    //console.log(raio);
     
     // setInterval(function() {
         //     a = (a + Math.PI / 360) % (Math.PI * 2);
@@ -17,15 +19,24 @@ function MCU() {
         
     compute(x, y, raio)        
     
-    Plotly.newPlot( PLOT, [{
+    if(flag == 0) {
+      flag = 1;
+    }  else {
+      console.log(flag)
+      Plotly.purge(PLOT);
+      cancelAnimationFrame(req);
+    }
+
+    Plotly.react( PLOT, [{
         x: x,
         y: y, mode: 'markers'
      }], {
         xaxis: {range: [-10, 10]},
         yaxis: {range: [-10, 10]} 
     } );
+      
     
-    requestAnimationFrame(anima);
+    req = requestAnimationFrame(anima);
 }    
 
 
@@ -48,14 +59,15 @@ function update (x, y, raio, PLOT) {
       }
     });
   
-    requestAnimationFrame(anima);
+    req = requestAnimationFrame(anima);
   }
 
 function compute(x, y, raio) {
+
     for(var i = 0; i < n; i++) {
         a = (a + Math.PI / 360) % (Math.PI * 2);
         x[i] = raio * Math.sin(a);
         y[i] = raio * Math.cos(a);
     }
-    console.log(x, y)
+    //console.log(x, y)
 }
