@@ -12,14 +12,13 @@
     <h1>MCU</h1>
     <center>
         <form action="javascript:MCU();">
-            Raio:
-            <br>
-            <input id="raio" type="number" name="raio" step="0.1" required>
+            <label for="raio">Raio:</label>
+            <input id="raio" type="number" name="raio" step="0.01" required>
             <input class="button button-blue" type="submit">
         </form>
     </center>
     <br>
-    <div id="mcuPlot" style="width:1280px;height:720px;"></div>
+    <div id="mcuPlot"></div>
 
     <script type="text/javascript" src="mcu.js"></script>
     
@@ -29,6 +28,6 @@
         var size = width < height ? width : height;
         document.getElementById('mcuPlot').style.width = size+"px";
         document.getElementById('mcuPlot').style.height = size+"px";
-</script>
+    </script>
 </body>
 </html>

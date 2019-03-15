@@ -11,10 +11,33 @@
 <body>
     <h1>Menu</h1>
     <div id="buttons">
-    	<a class="button button-blue" href="mcu.html">MCU</a>
-    	<a class="button button-blue" href="mru.html">MRU</a>
-    	<a class="button button-blue" href="mruv.html">MRUV</a>
+    	<span class="button button-blue" onclick="show('mcu.html')">MCU</span>
+    	<span class="button button-blue" onclick="show('mru.html')">MRU</span>
+    	<span class="button button-blue" onclick="show('mruv.html')">MRUV</span>
+    </div>
+
+    <div id="iframe">
+        <iframe id="movimento" src="" scrolling="no"></iframe>
     </div>
     
+    <script type="text/javascript">
+        
+        function show(m) {
+            if (document.getElementById('movimento').src.split("/").slice(-1)[0] == m) {
+                document.getElementById('movimento').src = '';
+                resizeIframe('0px');
+            }
+            else {
+                document.getElementById('movimento').src = m;
+                resizeIframe('900px');
+            }
+        }
+
+        function resizeIframe(height) {
+            //obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+            document.getElementById('movimento').style.height = height;
+        }
+    </script>
+
 </body>
 </html>
