@@ -2,122 +2,94 @@ var a = 0;
 var x = [], y = [];
 var n = 1;
 PLOT = document.getElementById('mruPlot');
-var equacao = undefined;
+var velocidade = undefined;
+var posInicial = undefined;
+var flag = 0;
+var req = undefined;
 
 function MRU() {
     
-    equacao = document.getElementById("equacao").value;
-    console.log(equacao);
+    velocidade = parseFloat(document.getElementById("velocidade").value);
+    posInicial = parseFloat(document.getElementById("posInicial").value);
+    console.log(velocidade);
 
-    // setInterval(function() {
-    //         compute(equacao)
-    //     }, 1000);
+    if(flag == 0) {
+        flag = 1;
+      }  else {
+        console.log(flag)
+        Plotly.purge(PLOT);
+        cancelAnimationFrame(req);
+        x = [];
+        y = [];
+        a = 0;
+      }
 
-    // setInterval(function() {
-        //     a = (a + Math.PI / 360) % (Math.PI * 2);
-        //     console.log(a)
-        // }, 1000);       
-    compute1(equacao)
+    compute()
+    
     Plotly.newPlot( PLOT, [{
         x: x,
         y: y,
         mode: 'markers'
      }], {
-        xaxis: {range: [0, 500]},
-        yaxis: {range: [0, 500]} 
+        xaxis: {range: [0, 50]},
+        yaxis: {range: [0, 50]} 
     } );
 
-    setInterval(function() {
-        var value = compute1(equacao)
-        console.log(value)
-        Plotly.extendTraces(PLOT, {x: [[a-1]], y:[[value]]}, [0]);
-
-        if(a > 1) {
-            Plotly.relayout(PLOT, {
-                xaxis: {
-                    range: [0, a+1]
-                }
-            });
-        }
-
-        if(value > 500) {
-            Plotly.relayout(PLOT,  {
-                yaxis: {
-                    range: [0, value+1]
-                }
-            })
-        }
-
-    }, 250)
-
-    
-    //requestAnimationFrame(anima);
+    req = requestAnimationFrame(update);
 }    
 
+function update () {
 
-function anima() {
-    update(equacao);
-}
-
-function update (equacao) {
-    compute(equacao);
+    compute();
   
     Plotly.animate(PLOT, {
       data: [{x:x, y: y}]
     }, {
       transition: {
-        duration: 1000
+        duration: 0
       },
       frame: {
-        duration: 1000,
-        redraw: true
+        duration: 0,
+        redraw: false
       }
     });
 
-    var lastX = x[x.length - 1];
-    var lastY = y[y.length - 1];
-    if(lastX > 50) {
+    if(a > 0) {
         Plotly.relayout(PLOT, {
             xaxis: {
-                range: [lastX-10, 2*lastX]
-            }
-        });
-    }
-
-    if(lastY > 50) {
-        Plotly.relayout(PLOT,  {
-            yaxis: {
-                range: [0, 2*lastY]
+                range: [0, a+40]
             }
         })
     }
-  
-    requestAnimationFrame(anima);
-  }
 
-function compute1(equacao) {
+    if(y[0] > 0) {
+        Plotly.relayout(PLOT, {
+        yaxis: {
+                range: [0, y[0]+40]
+            }
+        })
+    }
 
-    var novaEquacao = equacao.replace(/x/g, a);
-    var value = eval(novaEquacao);
-    x.push(a);
-    y.push(eval(novaEquacao));
+    if(y[0] < 0) {
+        Plotly.relayout(PLOT, {
+        yaxis: {
+                range: [y[0]-40, 0]
+            }
+        })
+    }
 
-    console.log(x, y);
-    
-    a++;
 
-    return value;
+
+    req = requestAnimationFrame(update);
 }
 
-function compute(equacao) {
-    console.log(novaEquacao)
+function compute() {
+    //console.log(velocidade)
     for(var i = 0; i< n; i++) {
         x[i] = a;
-        var novaEquacao = equacao.replace(/x/g, x[i]);
-        y[i] = eval(novaEquacao);
+        y[i] = posInicial + (velocidade * a);
         a++;
     }
-    
 
     console.log(x, y)
 
