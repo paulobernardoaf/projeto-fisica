@@ -27,7 +27,8 @@ function MCU() {
       cancelAnimationFrame(req);
     }
 
-    var aux = parseInt(raio) + 10;
+    var aux = parseInt(raio);
+    aux = aux + aux/2;
 
     Plotly.react( PLOT, [{
         x: x,
