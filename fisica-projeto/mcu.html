@@ -6,28 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="scripts.js"></script>
     <title>MCU</title>
 </head>
-<body>
+<body onload="resize('mcuPlot')">
     <h1>MCU</h1>
     <center>
         <form action="javascript:MCU();">
             <label for="raio">Raio:</label>
-            <input id="raio" type="number" name="raio" step="0.01" required>
-            <input class="button button-blue" type="submit">
+            <input id="raio" type="number" name="raio" step="0.01" placeholder="Raio" required>
+            <input class="button button-blue" type="submit" value="Ver">
         </form>
     </center>
     <br>
     <div id="mcuPlot"></div>
 
     <script type="text/javascript" src="mcu.js"></script>
-    
-    <script type="text/javascript">
-        var width = screen.width;
-        var height = screen.height;
-        var size = width < height ? width : height;
-        document.getElementById('mcuPlot').style.width = size+"px";
-        document.getElementById('mcuPlot').style.height = size+"px";
-    </script>
 </body>
 </html>
