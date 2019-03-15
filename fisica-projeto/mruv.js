@@ -4,6 +4,7 @@ var n = 1;
 PLOT = document.getElementById('mruvPlot');
 var velocidade = undefined;
 var posInicial = undefined;
+var aceleracao = undefined;
 var flag = 0;
 var req = undefined;
 
@@ -11,7 +12,8 @@ function MRUV() {
     
     velocidade = parseFloat(document.getElementById("velocidade").value);
     posInicial = parseFloat(document.getElementById("posInicial").value);
-    console.log(velocidade);
+    aceleracao = parseFloat(document.getElementById("aceleracao").value);
+    //console.log(velocidade);
 
     if(flag == 0) {
         flag = 1;
@@ -87,7 +89,7 @@ function compute() {
     //console.log(velocidade)
     for(var i = 0; i< n; i++) {
         x[i] = a;
-        y[i] = posInicial + (velocidade * a);
+        y[i] = posInicial + velocidade + (aceleracao * (a*a)/2);
         a++;
     }
 
