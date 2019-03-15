@@ -31,9 +31,10 @@ function MRU() {
         y: y,
         mode: 'markers'
      }], {
+        title: "S = So + v * t",
         xaxis: {range: [0, 50]},
         yaxis: {range: [0, 50]} 
-    } );
+    });
 
     req = requestAnimationFrame(update);
 }    
@@ -42,17 +43,19 @@ function update () {
 
     compute();
   
-    Plotly.animate(PLOT, {
-      data: [{x:x, y: y}]
-    }, {
-      transition: {
-        duration: 0
-      },
-      frame: {
-        duration: 0,
-        redraw: false
-      }
-    });
+    Plotly.extendTraces( PLOT , {x: [[a-1]], y: [y]}, [0])
+
+    // Plotly.animate(PLOT, {
+    //   data: [{x:x, y: y}]
+    // }, {
+    //   transition: {
+    //     duration: 0
+    //   },
+    //   frame: {
+    //     duration: 0,
+    //     redraw: false
+    //   }
+    // });
 
     if(a > 0) {
         Plotly.relayout(PLOT, {

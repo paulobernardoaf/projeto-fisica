@@ -33,6 +33,7 @@ function MRUV() {
         y: y,
         mode: 'markers'
      }], {
+        title: "S = So + Vo*t + at²/2", 
         xaxis: {range: [0, 50]},
         yaxis: {range: [0, 50]} 
     } );
@@ -44,17 +45,19 @@ function update () {
 
     compute();
   
-    Plotly.animate(PLOT, {
-      data: [{x:x, y: y}]
-    }, {
-      transition: {
-        duration: 0
-      },
-      frame: {
-        duration: 0,
-        redraw: false
-      }
-    });
+    Plotly.extendTraces( PLOT , {x: [[a-1]], y: [y]}, [0])
+
+    // Plotly.animate(PLOT, {
+    //   data: [{x:x, y: y}]
+    // }, {
+    //   transition: {
+    //     duration: 0
+    //   },
+    //   frame: {
+    //     duration: 0,
+    //     redraw: false
+    //   }
+    // });
 
     if(a > 0) {
         Plotly.relayout(PLOT, {
@@ -89,7 +92,7 @@ function compute() {
     //console.log(velocidade)
     for(var i = 0; i< n; i++) {
         x[i] = a;
-        y[i] = posInicial + velocidade + (aceleracao * (a*a)/2);
+        y[i] = posInicial + (velocidade*a) + (aceleracao * (a*a)/2);
         a++;
     }
 

@@ -10,16 +10,17 @@
 </head>
 <body>
     <h1>MRUV</h1>
-    <form action="javascript:MRUV();">
-        <label for="velocidade">Velocidade:</label>
-        <input id="velocidade" type="number" name="velocidade" step="0.1" required>
-        <label for="posInicial">Posição Inicial</label>
-        <input id="posInicial" type="number" name="posInicial" value="0" step="0.1" required>
-        <label for="aceleracao">Aceleração</label>
-        <input id="aceleracao" type="number" name="aeleracao" placeholder="Aceleração" step="0.1" required>
-        <br>
-        <input type="submit">
-    </form>
+    <center>
+        <form action="javascript:MRUV();">
+            <label for="velocidade">Velocidade:</label>
+            <input id="velocidade" type="number" name="velocidade" step="0.1" required>
+            <label for="posInicial">Posição Inicial</label>
+            <input id="posInicial" type="number" name="posInicial" value="0" step="0.1" required>
+            <label for="aceleracao">Aceleração</label>
+            <input id="aceleracao" type="number" name="aeleracao" placeholder="Aceleração" step="0.1" required>
+            <input class="button button-blue" type="submit">
+        </form>
+    </center>
     <br>
     <div id="mruvPlot" style="width:1280px;height:720px;"></div>
 
