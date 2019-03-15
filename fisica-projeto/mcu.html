@@ -21,5 +21,13 @@
     <div id="mcuPlot" style="width:1280px;height:720px;"></div>
 
     <script type="text/javascript" src="mcu.js"></script>
+    
+    <script type="text/javascript">
+        var width = screen.width;
+        var height = screen.height;
+        var size = width < height ? width : height;
+        document.getElementById('mcuPlot').style.width = size+"px";
+        document.getElementById('mcuPlot').style.height = size+"px";
+</script>
 </body>
 </html>

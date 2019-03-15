@@ -27,12 +27,14 @@ function MCU() {
       cancelAnimationFrame(req);
     }
 
+    var aux = parseInt(raio) + 10;
+
     Plotly.react( PLOT, [{
         x: x,
         y: y, mode: 'markers'
      }], {
-        xaxis: {range: [-10, 10]},
-        yaxis: {range: [-10, 10]} 
+        xaxis: {range: [-aux, +aux]},
+        yaxis: {range: [-aux, +aux]} 
     } );
       
     
