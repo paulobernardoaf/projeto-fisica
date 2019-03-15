@@ -8,7 +8,14 @@ var req = undefined;
 
 function MCU() {
 
-    raio = parseFloat(document.getElementById("raio").value);
+    
+    raio = document.getElementById("raio").value;
+    //console.log(raio);
+    
+    // setInterval(function() {
+        //     a = (a + Math.PI / 360) % (Math.PI * 2);
+        //     console.log(a)
+        // }, 1000);
         
     compute(x, y, raio)        
     
@@ -20,7 +27,8 @@ function MCU() {
       cancelAnimationFrame(req);
     }
 
-    var aux = raio + raio/3;
+    var aux = parseInt(raio);
+    aux = aux + aux/2;
 
     Plotly.react( PLOT, [{
         x: x,
@@ -28,7 +36,8 @@ function MCU() {
      }], {
         xaxis: {range: [-aux, +aux]},
         yaxis: {range: [-aux, +aux]} 
-    });
+    } );
+      
     
     req = requestAnimationFrame(anima);
 }    
@@ -63,4 +72,5 @@ function compute(x, y, raio) {
         x[i] = raio * Math.sin(a);
         y[i] = raio * Math.cos(a);
     }
+    //console.log(x, y)
 }
