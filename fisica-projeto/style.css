@@ -1,5 +1,5 @@
 body {
-	font-family: 'Comfortaa', cursive;
+  font-family: 'Comfortaa', cursive;
   background: #fff;
 }
 
@@ -16,18 +16,17 @@ body {
 }
 
 h1 {
-	margin: 1%;
-	padding: 1%;
-	display: block;
-	text-align: center;
-	color: #545454;
+  margin: 1%;
+  padding: 1%;
+  display: block;
+  text-align: center;
+  color: #545454;
 }
 
 #buttons {
-	padding-top: 40px;
-	width: 202px;
-	display: block;
-	margin: 0 auto;
+  position: relative;
+  left: 50%;
+  margin-left: -101px;
 }
 
 .button {
